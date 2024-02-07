@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>semantic_gazebo_simulation</name>
+  <version>0.0.0</version>
+  <description>Semantic Gazebo Simulation</description>
+
+  <author email="rikkertl98@gmail.com">Rikkert Lensen</author>
+  
+  <maintainer email="rikkertl98@gmail.com">Rikkert Lensen</maintainer>
+
+  <license>BSD</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <depend>roscpp</depend>
+  <depend>rospy</depend>
+  <depend>tf2_ros</depend>
+  <depend>std_msgs</depend>
+  <depend>sensor_msgs</depend>
+  <depend>message_runtime</depend>
+  <depend>rosbag</depend>
+  <depend>cv_bridge</depend>
+
+</package>

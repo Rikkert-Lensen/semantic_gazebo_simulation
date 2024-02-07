@@ -1,0 +1,18 @@
+label_colors:
+    color_0: [0, 0, 0]              # free
+    color_1: [0, 0, 255]            # door frames
+    color_2: [0, 255, 0]            # walls
+    color_3: [255, 0, 0]            # floor
+    color_4: [255, 255, 0]          # windows
+    color_5: [255, 0, 255]          # curtain
+    color_6: [0, 255, 255]          # table
+    color_7: [0, 127, 255]          # chair
+    color_8: [0, 0, 127]            # bed
+    color_9: [0, 127, 0]            # cabinet
+    color_10: [127, 0, 0]           # kitchen
+    color_11: [127, 0, 127]         # trolley
+    color_12: [0, 127, 127]         # trashcan
+    color_13: [127, 127, 0]         # toilet
+    color_14: [127, 127, 127]       # storage
+    color_15: [127, 255, 0]         # vending machine
+    color_16: [255, 127, 0]         # electronics

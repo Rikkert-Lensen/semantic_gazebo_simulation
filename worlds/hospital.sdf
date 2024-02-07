@@ -1,0 +1,1845 @@
+<sdf version='1.9'>
+  <world name='semantic_segmentation_world'>
+    <link name="world"/>
+    <physics name="1ms" type="ignored">
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1.0</real_time_factor>
+    </physics>
+    <plugin filename="ignition-gazebo-physics-system" name="ignition::gazebo::systems::Physics"></plugin>
+    <plugin filename="ignition-gazebo-user-commands-system" name="ignition::gazebo::systems::UserCommands"></plugin>
+    <plugin filename="ignition-gazebo-scene-broadcaster-system" name="ignition::gazebo::systems::SceneBroadcaster"></plugin>
+    <plugin filename="ignition-gazebo-sensors-system" name="ignition::gazebo::systems::Sensors">
+      <render_engine>ogre2</render_engine>
+    </plugin>
+
+    <light type="directional" name="sun">
+      <cast_shadows>true</cast_shadows>
+      <pose>0 0 10 0 0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.5 0.1 -0.9</direction>
+    </light>
+
+    <!-- 
+      semantic_labels:
+        - door_frames: 1
+        - walls: 2
+        - floor: 3
+        - windows: 4
+        - curtains: 5
+        - table: 6
+        - chair: 7
+        - bed: 8
+        - cabinet: 9
+        - sink: 10
+        - platform_trolley: 11
+        - trash_can: 12
+        - toilet: 13
+        - storage_rack: 14
+        - vending_machine: 15
+        - hospital_trolley: 16
+        - hospital_equipment: 17
+        - sofa: 18
+        - kitchen_counter: 19
+        - mop_cart: 20
+        - refrigerator: 21
+        - television: 22
+     -->
+
+    <model name='aws_robomaker_hospital_floor_01_doorframes'>
+      <include>
+        <uri>model://aws_robomaker_hospital_floor_01_doorframes</uri>
+        <static>true</static>
+        <pose>0 0 0 0 0 0</pose>
+        <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+          <label>1</label>
+        </plugin>
+      </include>
+      <pose>0 0 0 0 -0 0</pose>
+      <static>true</static>
+    </model>
+    <model name='aws_robomaker_hospital_floor_01_walls'>
+      <include>
+        <uri>model://aws_robomaker_hospital_floor_01_walls</uri>
+        <static>true</static>
+        <pose>0 0 0 0 0 0</pose>
+        <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+          <label>2</label>
+        </plugin>
+      </include>
+      <pose>0 0 0 0 -0 0</pose>
+      <static>true</static>
+    </model>
+    <model name='aws_robomaker_hospital_floor_01_windows'>
+      <include>
+        <uri>model://aws_robomaker_hospital_floor_01_windows</uri>
+        <static>true</static>
+        <pose>0 0 0 0 0 0</pose>
+        <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+          <label>4</label>
+        </plugin>
+      </include>
+      <pose>0 0 0 0 -0 0</pose>
+      <static>true</static>
+    </model>
+    <model name='aws_robomaker_hospital_floor_01_floor_1'>
+      <include>
+        <uri>model://aws_robomaker_hospital_floor_01_floor</uri>
+        <static>true</static>
+        <pose>0 0 0 0 0 0</pose>
+        <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+          <label>3</label>
+        </plugin>
+      </include>
+      <pose>0 0 0 0 -0 0</pose>
+      <static>true</static>
+    </model>
+    <model name='aws_robomaker_hospital_floor_01_ceiling_1'>
+      <include>
+        <uri>model://aws_robomaker_hospital_floor_01_ceiling</uri>
+        <static>true</static>
+        <pose>0 0 0 0 0 0</pose>
+        <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+          <label>3</label>
+        </plugin>
+      </include>
+      <pose>0 0 0 0 -0 0</pose>
+      <static>true</static>
+    </model>
+    <include>
+      <static>true</static>
+      <uri>model://AdjTable</uri>
+      <name>AdjTable</name>
+      <pose>0.90921 -5.5 0 0 -0 0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>6</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://AdjTable</uri>
+      <name>AdjTable_0</name>
+      <pose>-0.874021 -5.5 0 0 -0 0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>6</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://OfficeChairBlack</uri>
+      <name>OfficeChairBlack</name>
+      <pose>-0.798981 -6.45172 0 0 -0 -2.8814</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>7</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://OfficeChairBlack</uri>
+      <name>OfficeChairBlack_0</name>
+      <pose>0.819395 -6.34108 0 0 -0 2.68029</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>7</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://Chair</uri>
+      <name>Chair</name>
+      <pose>0.548995 -0.37779 -1e-06 0 0 -1.5708</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>7</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://Chair</uri>
+      <name>Chair_0</name>
+      <pose>1.60075 -0.377791 -1e-06 0 0 -1.5708</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>7</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://Chair</uri>
+      <name>Chair_1</name>
+      <pose>-0.562972 -0.377792 -2e-06 -0 0 -1.5708</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>7</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://Chair</uri>
+      <name>Chair_2</name>
+      <pose>-1.50591 -0.377792 -5e-06 0 -0 -1.5708</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>7</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://MetalCabinet</uri>
+      <name>MetalCabinet</name>
+      <pose>3.20395 -6.52375 0 0 0 -1.5708</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>9</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://MetalCabinet</uri>
+      <name>MetalCabinet_1</name>
+      <pose>3.20395 -5.6198 0 0 0 -1.5708</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>9</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>aws_robomaker_hospital_curtain_open_01</uri>
+      <name>aws_robomaker_hospital_curtain_open_01</name>
+      <pose>11.0316 -21.7954 0 0 0 -1.5708</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>5</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>aws_robomaker_hospital_curtain_open_01</uri>
+      <name>aws_robomaker_hospital_curtain_open_01_1</name>
+      <pose>11.0316 -18.2638 0 0 0 -1.5708</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>5</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>aws_robomaker_hospital_curtain_open_01</uri>
+      <name>aws_robomaker_hospital_curtain_open_01_2</name>
+      <pose>11.0316 -14.7638 0 0 0 -1.5708</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>5</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://CGMClassic</uri>
+      <name>CGMClassic</name>
+      <pose>11.2184 -15.1523 0 0 -0 -3.14159</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>8</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://CGMClassic</uri>
+      <name>CGMClassic_1</name>
+      <pose>11.2184 -18.671 0 0 -0 -3.14159</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>8</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://CGMClassic</uri>
+      <name>CGMClassic_1_1</name>
+      <pose>11.2184 -22.2487 0 0 -0 -3.14159</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>8</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://InstrumentCart1</uri>
+      <name>InstrumentCart1</name>
+      <pose>11.4928 -23.3702 0 0 0 -1.70661</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>16</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://BedsideTable</uri>
+      <name>BedsideTable</name>
+      <pose>11.5443 -16.2709 0.000179 -0 -0 -0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>6</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://Toilet</uri>
+      <name>Toilet</name>
+      <pose>7.24968 -12.5036 0.000386 2e-06 -1e-06 -1.5708</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>13</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://KitchenSink</uri>
+      <name>KitchenSink</name>
+      <pose>6.92042 -10.4577 -0.00161 0 0 0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>10</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://MetalCabinet</uri>
+      <name>MetalCabinet_0</name>
+      <pose>6.81787 -11.3812 0 0 -0 1.5708</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>9</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://StorageRackCoverOpen</uri>
+      <name>StorageRackCoverOpen</name>
+      <pose>10.2625 -10.5011 -1e-06 0 -0 -0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>14</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://ParkingTrolleyMax</uri>
+      <name>ParkingTrolleyMax</name>
+      <pose>7.03005 -18.4574 -0.000113 0 -0 0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>11</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://Chair</uri>
+      <name>Chair_3</name>
+      <pose>11.9837 -16.9576 -1e-06 -0 0 2.92274</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>7</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://Chair</uri>
+      <name>Chair_3_1</name>
+      <pose>10.7621 -13.6291 -1e-06 -0 0 -0.907664</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>7</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://IVStand</uri>
+      <name>IVStand</name>
+      <pose>11.7845 -19.7956 0.000674 0 0 -0.354398</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>17</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://StorageRackCovered</uri>
+      <name>StorageRackCovered</name>
+      <pose>11.6131 -10.4638 -1e-06 0 0 0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>14</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://PotatoChipChair</uri>
+      <name>PotatoChipChair</name>
+      <pose>-5.98654 9.14862 0 0 -0 0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>7</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://PotatoChipChair</uri>
+      <name>PotatoChipChair_0</name>
+      <pose>-5.98654 7.5 0 0 -0 0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>7</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://PotatoChipChair</uri>
+      <name>PotatoChipChair_1</name>
+      <pose>-3.5 9.14862 0 0 -0 -3.14159</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>7</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://PotatoChipChair</uri>
+      <name>PotatoChipChair_1_1</name>
+      <pose>-3.5 7.5 0 0 -0 -3.14159</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>7</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>aws_robomaker_residential_CoffeeTable_01</uri>
+      <name>aws_robomaker_residential_CoffeeTable_01</name>
+      <pose>-4.73818 8.18769 0 0 0 -1.5708</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>6</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>aws_robomaker_hospital_curtain_half_open_01</uri>
+      <name>aws_robomaker_hospital_curtain_half_open_01</name>
+      <pose>11.0345 -3.37669 0 0 0 -1.5708</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>5</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>aws_robomaker_hospital_curtain_half_open_01</uri>
+      <name>aws_robomaker_hospital_curtain_half_open_01_1</name>
+      <pose>11.0345 -7.91119 0 0 0 -1.5708</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>5</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>aws_robomaker_hospital_curtain_half_open_01</uri>
+      <name>aws_robomaker_hospital_curtain_half_open_01_1_1</name>
+      <pose>11.0345 0.62331 0 0 0 -1.5708</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>5</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>aws_robomaker_residential_Sofa_01</uri>
+      <name>aws_robomaker_residential_Sofa_01</name>
+      <pose>-11.2059 -25.2767 -1e-06 0 0 0.002686</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>18</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>aws_robomaker_residential_KitchenCabinet_01</uri>
+      <name>aws_robomaker_residential_KitchenCabinet_01</name>
+      <pose>-10.8325 -30.6456 0 0 -0 1.5708</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>19</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://MopCart3</uri>
+      <name>MopCart3</name>
+      <pose>-6.90486 -27.3095 -5.9e-05 -2e-06 0 -4e-05</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>20</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://MetalCabinet</uri>
+      <name>MetalCabinet_2</name>
+      <pose>-6.7919 -29.0087 0 0 0 -1.5708</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>9</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://MetalCabinet</uri>
+      <name>MetalCabinet_3</name>
+      <pose>-6.7889 -28.1741 0 0 0 -1.5708</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>9</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://ParkingTrolleyMin</uri>
+      <name>ParkingTrolleyMin</name>
+      <pose>-8.72065 -31.6295 -0.000112 0 -1e-06 0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>11</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>aws_robomaker_residential_CoffeeTable_01</uri>
+      <name>aws_robomaker_residential_CoffeeTable_01_0</name>
+      <pose>-10.3567 -25.8253 0 0 -0 0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>6</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>aws_robomaker_residential_Trash_01</uri>
+      <name>aws_robomaker_residential_Trash_01</name>
+      <pose>-12.144 -28.0947 0.000903 -0 0 -0.000114</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>12</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>aws_robomaker_warehouse_ClutteringA_01</uri>
+      <name>aws_robomaker_warehouse_ClutteringA_01</name>
+      <pose>-10.9825 -33.5222 0 0 -0 0</pose>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>aws_robomaker_residential_Refrigerator_01</uri>
+      <name>aws_robomaker_residential_Refrigerator_01</name>
+      <pose>-12.0096 -28.8174 0 0 -0 1.5708</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>21</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>aws_robomaker_residential_SofaB_01</uri>
+      <name>aws_robomaker_residential_SofaB_01</name>
+      <pose>-10.5858 -27.0468 -1e-06 0 0 1.5708</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>18</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>aws_robomaker_residential_SofaB_01</uri>
+      <name>aws_robomaker_residential_SofaB_01_0</name>
+      <pose>-9.65814 -27.0468 -1e-06 0 0 1.5708</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>18</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>aws_robomaker_residential_TV_02</uri>
+      <name>aws_robomaker_residential_TV_02</name>
+      <pose>-8.88076 8.12696 1.53657 0 -0 -3.14159</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>22</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://VendingMachine</uri>
+      <name>VendingMachine</name>
+      <pose>8.59887 8.0428 0.002383 -2e-06 0.008298 -3.14159</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>15</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://StorageRackCoverOpen</uri>
+      <name>StorageRackCoverOpen_0</name>
+      <pose>7.0237 16.5012 -1e-06 0 -0 -0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>14</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://StorageRackCoverOpen</uri>
+      <name>StorageRackCoverOpen_1</name>
+      <pose>11.2249 16.3977 -1e-06 0 0 -0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>14</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://StorageRack</uri>
+      <name>StorageRack</name>
+      <pose>9.08242 16.4673 -1e-06 0 -0 -0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>14</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://MopCart3</uri>
+      <name>MopCart3_0</name>
+      <pose>10.0491 16.3985 -5.9e-05 -0 0 -0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>20</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://ParkingTrolleyMin</uri>
+      <name>ParkingTrolleyMin_0</name>
+      <pose>11.8562 12.5297 -0.000111 0 -0 0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>11</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://StorageRackCovered</uri>
+      <name>StorageRackCovered_0</name>
+      <pose>9.48853 12.4878 -1e-06 0 0 0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>14</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://OfficeChairBlack</uri>
+      <name>OfficeChairBlack_1</name>
+      <pose>11.8922 8.73819 0 0 0 -1.86174</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>7</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://OfficeChairBlack</uri>
+      <name>OfficeChairBlack_2</name>
+      <pose>11.8993 7.28826 0 0 0 -1.1435</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>7</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://AdjTable</uri>
+      <name>AdjTable_1</name>
+      <pose>11.0129 7.09445 0 0 0 -1.5708</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>6</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://AdjTable</uri>
+      <name>AdjTable_2</name>
+      <pose>10.9922 8.88436 0 0 0 -1.5708</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>6</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://Drawer</uri>
+      <name>OfficeChairBlue</name>
+      <pose>12.2188 11.6807 0 0 -0 0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>7</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://Chair</uri>
+      <name>Chair_4</name>
+      <pose>9.73939 8.53859 -1e-06 -0 0 0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>7</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://Chair</uri>
+      <name>Chair_5</name>
+      <pose>9.74358 9.36268 -1e-06 -0 0 0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>7</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://Chair</uri>
+      <name>Chair_6</name>
+      <pose>9.80833 7.48717 -1e-06 -0 0 0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>7</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://Chair</uri>
+      <name>Chair_7</name>
+      <pose>9.77816 6.66339 -1e-06 -0 0 0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>7</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://MetalCabinet</uri>
+      <name>MetalCabinet_4</name>
+      <pose>12.1964 4.48869 0 0 0 -1.5708</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>9</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>aws_robomaker_residential_KitchenCabinet_01</uri>
+      <name>aws_robomaker_residential_KitchenCabinet_01_0</name>
+      <pose>-11.15 15.3252 0 0 -0 0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>19</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>aws_robomaker_residential_Refrigerator_01</uri>
+      <name>aws_robomaker_residential_Refrigerator_01_0</name>
+      <pose>-11.9902 13.1626 0 0 -0 1.5708</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>21</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>aws_robomaker_residential_Trash_01</uri>
+      <name>aws_robomaker_residential_Trash_01_0</name>
+      <pose>-9.57195 16.6504 0.000903 -0 0 0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>12</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://ParkingTrolleyMax</uri>
+      <name>ParkingTrolleyMax_0</name>
+      <pose>-6.65108 16.3011 -0.000112 -2e-06 -2e-06 0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>11</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://StorageRackCovered</uri>
+      <name>StorageRackCovered_1</name>
+      <pose>-8.67793 12.4585 -1e-06 0 0 0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>14</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://OfficeChairBlack</uri>
+      <name>OfficeChairBlack_3</name>
+      <pose>-11.9189 8.73712 0 0 -0 1.94005</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>7</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://OfficeChairBlack</uri>
+      <name>OfficeChairBlack_4</name>
+      <pose>-11.8646 7.30585 0 0 -0 1.28808</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>7</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://AdjTable</uri>
+      <name>AdjTable_3</name>
+      <pose>-10.9105 7.10281 0 0 -0 1.5708</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>6</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://AdjTable</uri>
+      <name>AdjTable_4</name>
+      <pose>-10.8828 8.90757 0 0 -0 1.5708</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>6</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://Chair</uri>
+      <name>Chair_8</name>
+      <pose>-9.83935 9.27532 -1e-06 -0 0 3.14159</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>7</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://Chair</uri>
+      <name>Chair_9</name>
+      <pose>-9.83485 8.55152 -1e-06 -0 0 3.14159</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>7</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://Chair</uri>
+      <name>Chair_10</name>
+      <pose>-9.82894 7.41665 -1e-06 -0 0 3.14159</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>7</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://Chair</uri>
+      <name>Chair_11</name>
+      <pose>-9.78027 6.55586 -1e-06 -2e-06 0 3.14159</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>7</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://PotatoChipChair</uri>
+      <name>PotatoChipChair_2</name>
+      <pose>3.26132 9.14862 0 0 -0 0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>7</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://PotatoChipChair</uri>
+      <name>PotatoChipChair_3</name>
+      <pose>3.26132 7.5 0 0 -0 0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>7</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://PotatoChipChair</uri>
+      <name>PotatoChipChair_4</name>
+      <pose>6.10439 9.14862 0 0 -0 -3.14159</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>7</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://PotatoChipChair</uri>
+      <name>PotatoChipChair_5</name>
+      <pose>6.10439 7.5 0 0 -0 -3.14159</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>7</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>aws_robomaker_residential_CoffeeTable_01</uri>
+      <name>aws_robomaker_residential_CoffeeTable_01_1</name>
+      <pose>4.73731 8.30643 0 0 0 -1.5708</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>6</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://CGMClassic</uri>
+      <name>CGMClassic_0</name>
+      <pose>3.23289 -3.51657 0 0 -0 1.5708</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>8</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://CGMClassic</uri>
+      <name>CGMClassic_2</name>
+      <pose>10.959 -3.79408 0 0 -0 3.14159</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>8</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://CGMClassic</uri>
+      <name>CGMClassic_3</name>
+      <pose>11.1141 -8.53879 0 0 -0 3.14159</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>8</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://CGMClassic</uri>
+      <name>CGMClassic_4</name>
+      <pose>11.0715 0.21292 0 0 -0 3.14159</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>8</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://BloodPressureMonitor</uri>
+      <name>BloodPressureMonitor</name>
+      <pose>11.7322 -4.99127 0 0 0 -1.90352</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>17</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://BedsideTable</uri>
+      <name>BedsideTable_0</name>
+      <pose>10.7761 -4.84636 0.000179 -0 -0 -0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>6</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://BedsideTable</uri>
+      <name>BedsideTable_1</name>
+      <pose>11.6195 -0.724632 0.000179 -0 -0 -0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>6</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://BedsideTable</uri>
+      <name>BedsideTable_2</name>
+      <pose>11.2319 -9.46643 0.000179 -0 -0 -0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>6</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://StorageRackCovered</uri>
+      <name>StorageRackCovered_2</name>
+      <pose>11.7993 3.52061 -1e-06 0 -0 0.001039</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>14</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://InstrumentCart1</uri>
+      <name>InstrumentCart1_0</name>
+      <pose>12.1427 -1.7885 0 0 0 -1.5708</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>16</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://InstrumentCart1</uri>
+      <name>InstrumentCart1_1</name>
+      <pose>12.1587 -6.12496 0 0 0 -1.5708</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>16</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://Chair</uri>
+      <name>Chair_12</name>
+      <pose>6.93016 -6.54844 -1e-06 -0 0 0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>7</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://Chair</uri>
+      <name>Chair_13</name>
+      <pose>6.94163 -5.4105 -1e-06 -0 0 0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>7</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://Toilet</uri>
+      <name>Toilet_0</name>
+      <pose>7.23715 1.49597 0.000378 0 0 -1.5708</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>13</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://BedTable</uri>
+      <name>BedTable</name>
+      <pose>1.6606 -11.4813 0.001189 0 0 -0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>6</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://BedTable</uri>
+      <name>BedTable_0</name>
+      <pose>-1.82114 -11.4269 0.001189 0 0 -0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>6</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://InstrumentCart2</uri>
+      <name>InstrumentCart2</name>
+      <pose>1.66507 -12.7273 0 0 -0 -3.14159</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>16</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://SurgicalTrolleyMed</uri>
+      <name>SurgicalTrolleyMed</name>
+      <pose>0.686291 -10.4465 0 0 -0 0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>16</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://SurgicalTrolleyMed</uri>
+      <name>SurgicalTrolleyMed_0</name>
+      <pose>-0.641769 -12.5125 0 0 -0 0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>16</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://BMWCart</uri>
+      <name>BMWCart</name>
+      <pose>3.04521 -12.4441 0.002079 -0 -2e-06 -0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>17</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://BMWCart</uri>
+      <name>BMWCart_0</name>
+      <pose>-0.478783 -10.5303 0.002078 -0 0 -0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>17</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://BedsideTable</uri>
+      <name>BedsideTable_3</name>
+      <pose>-3.00652 -12.509 0.000179 -0 -0 -0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>6</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://XRayMachine</uri>
+      <name>XRayMachine</name>
+      <pose>-1.71733 -20.0906 0 0 0 -1.5708</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>17</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://XRayMachine</uri>
+      <name>XRayMachine_0</name>
+      <pose>1.78401 -20.0736 0 0 -0 1.5708</pose>      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>17</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://BPCart</uri>
+      <name>BPCart</name>
+      <pose>-0.579008 -16.5482 0.003438 0 -0 -0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>17</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://BPCart</uri>
+      <name>BPCart_0</name>
+      <pose>0.623825 -22.6075 0.039179 -0.004414 0.002396 2.37845</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>16</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://SurgicalTrolley</uri>
+      <name>SurgicalTrolley</name>
+      <pose>1.59967 -18.5462 0 0 -0 0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>16</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://SurgicalTrolley</uri>
+      <name>SurgicalTrolley_0</name>
+      <pose>-1.5232 -18.5798 0 0 -0 0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>16</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://SurgicalTrolleyMed</uri>
+      <name>SurgicalTrolleyMed_1</name>
+      <pose>-2.76211 -22.5165 0 0 -0 0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>16</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://SurgicalTrolleyMed</uri>
+      <name>SurgicalTrolleyMed_2</name>
+      <pose>2.75271 -22.5845 0 0 -0 0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>16</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://InstrumentCart2</uri>
+      <name>InstrumentCart2_0</name>
+      <pose>-0.889479 -21.146 0 0 0 -2.02447</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>16</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://InstrumentCart2</uri>
+      <name>InstrumentCart2_1</name>
+      <pose>0.994182 -21.4876 0 0 -0 2.35533</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>16</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://IVStand</uri>
+      <name>IVStand_0</name>
+      <pose>-0.451445 -22.599 0.000674 0 0 -0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>17</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://AnesthesiaMachine</uri>
+      <name>AnesthesiaMachine</name>
+      <pose>-1.49671 -22.464 0 0 -0 3.14159</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>17</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://AnesthesiaMachine</uri>
+      <name>AnesthesiaMachine_0</name>
+      <pose>1.6141 -16.4811 0 0 -0 0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>17</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://StorageRack</uri>
+      <name>StorageRack_0</name>
+      <pose>1.82644 -32.5336 -1e-06 0 0 0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>14</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://StorageRack</uri>
+      <name>StorageRack_1</name>
+      <pose>10.8435 -32.5084 -1e-06 0 -0 -0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>14</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://TrolleyBed</uri>
+      <name>TrolleyBed</name>
+      <pose>4.14328 -32.5438 -1e-06 0 0 0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>8</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://TrolleyBed</uri>
+      <name>TrolleyBed_0</name>
+      <pose>6.66273 -32.5618 -1e-06 0 0 0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>8</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://TrolleyBed</uri>
+      <name>TrolleyBed_1</name>
+      <pose>8.80339 -32.5581 -1e-06 0 0 0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>8</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://BedsideTable</uri>
+      <name>BedsideTable_4</name>
+      <pose>9.05379 -34.6412 0.000179 -0 -0 -0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>6</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>aws_robomaker_hospital_curtain_open_01</uri>
+      <name>aws_robomaker_hospital_curtain_open_01_0</name>
+      <pose>-11.0134 -8.64062 0 0 -0 1.5708</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>5</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>aws_robomaker_hospital_curtain_closed_01</uri>
+      <name>aws_robomaker_hospital_curtain_closed_01</name>
+      <pose>-11.0315 -4.10603 0 0 -0 1.5708</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>5</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>aws_robomaker_hospital_curtain_closed_01</uri>
+      <name>aws_robomaker_hospital_curtain_closed_01_0</name>
+      <pose>-11.0315 -0.110902 0 0 -0 1.5708</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>5</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://CGMClassic</uri>
+      <name>CGMClassic_5</name>
+      <pose>-11.1381 -8.08696 0 0 -0 0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>8</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://CGMClassic</uri>
+      <name>CGMClassic_6</name>
+      <pose>-11.0913 -3.52835 0 0 -0 0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>8</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://CGMClassic</uri>
+      <name>CGMClassic_7</name>
+      <pose>-11.1148 0.313524 0 0 -0 0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>8</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://BPCart</uri>
+      <name>BPCart_1</name>
+      <pose>-11.6896 1.67662 0.003418 6e-06 5.1e-05 0.960046</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>17</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://StorageRackCovered</uri>
+      <name>StorageRackCovered_3</name>
+      <pose>-11.6039 3.42507 -1e-06 0 0 0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>14</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://Chair</uri>
+      <name>Chair_14</name>
+      <pose>-12.0527 -1.66062 -1e-06 -0 0 0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>7</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://Chair</uri>
+      <name>Chair_15</name>
+      <pose>-11.261 -6.90034 -1e-06 -0 0 -0.904933</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>7</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://BedsideTable</uri>
+      <name>BedsideTable_5</name>
+      <pose>-11.2553 -9.14349 0.00018 -0 -0 -0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>6</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://BedsideTable</uri>
+      <name>BedsideTable_6</name>
+      <pose>-11.8334 -2.44654 0.002976 -0.011187 0 -0.010361</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>6</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://InstrumentCart1</uri>
+      <name>InstrumentCart1_2</name>
+      <pose>-12.0037 -5.83943 0 0 -0 1.60274</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>16</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://Toilet</uri>
+      <name>Toilet_1</name>
+      <pose>-7.27647 1.49903 0.000386 0 0 -1.5708</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>13</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://Toilet</uri>
+      <name>Toilet_2</name>
+      <pose>-7.2583 -12.4811 0.005484 -0 0.017603 -1.57011</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>13</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://KitchenSink</uri>
+      <name>KitchenSink_0</name>
+      <pose>-7.01131 3.53319 -0.001613 0 0 -3.14159</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>10</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://StorageRack</uri>
+      <name>StorageRack_2</name>
+      <pose>-6.94587 -7.19892 -1e-06 -0 0 -1.5708</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>14</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>aws_robomaker_hospital_curtain_open_01</uri>
+      <name>aws_robomaker_hospital_curtain_open_01_3</name>
+      <pose>-11.0319 -22.5248 0 0 -0 1.5708</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>5</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>aws_robomaker_hospital_curtain_half_open_01</uri>
+      <name>aws_robomaker_hospital_curtain_half_open_01_0</name>
+      <pose>-11.0319 -18.9932 0 0 -0 1.5708</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>5</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>aws_robomaker_hospital_curtain_closed_01</uri>
+      <name>aws_robomaker_hospital_curtain_closed_01_1</name>
+      <pose>-11.0315 -15.498 0 0 -0 1.5708</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>5</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://CGMClassic</uri>
+      <name>CGMClassic_8</name>
+      <pose>-11.2398 -14.795 0 0 -0 0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>8</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://CGMClassic</uri>
+      <name>CGMClassic_9</name>
+      <pose>-11.1581 -18.6036 0 0 -0 0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>8</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://CGMClassic</uri>
+      <name>CGMClassic_10</name>
+      <pose>-11.1431 -22.2035 0 0 -0 0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>8</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://StorageRackCovered</uri>
+      <name>StorageRackCovered_4</name>
+      <pose>-11.5788 -10.5324 -1e-06 0 0 0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>14</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://BloodPressureMonitor</uri>
+      <name>BloodPressureMonitor_0</name>
+      <pose>-11.9493 -17.4064 0 0 -0 1.28066</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>17</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://InstrumentCart1</uri>
+      <name>InstrumentCart1_3</name>
+      <pose>-6.87303 -21.2611 0 0 0 -1.60521</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>16</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://BedsideTable</uri>
+      <name>BedsideTable_7</name>
+      <pose>-11.8791 -21.2139 0.00018 -0 -0 -0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>6</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://BedsideTable</uri>
+      <name>BedsideTable_8</name>
+      <pose>-11.9927 -16.775 0.00018 -0 -0 -0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>6</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://BedsideTable</uri>
+      <name>BedsideTable_9</name>
+      <pose>-12.1206 -13.6107 0.00018 -0 -0 -0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>6</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://Chair</uri>
+      <name>Chair_16</name>
+      <pose>-12.1107 -12.7113 -1e-06 -0 0 0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>7</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://ParkingTrolleyMax</uri>
+      <name>ParkingTrolleyMax_1</name>
+      <pose>-7.28641 -10.9155 -0.000112 -0 -0 -0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>11</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://AdjTable</uri>
+      <name>AdjTable_5</name>
+      <pose>-2.58472 -27.6365 0 0 -0 0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>6</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://OfficeChairBlack</uri>
+      <name>OfficeChairBlack_5</name>
+      <pose>-2.50923 -26.6713 0 0 -0 0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>7</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://Drawer</uri>
+      <name>OfficeChairBlue_0</name>
+      <pose>-0.930141 -26.316 0 0 -0 0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>7</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>aws_robomaker_residential_KitchenCabinet_01</uri>
+      <name>aws_robomaker_residential_KitchenCabinet_01_1</name>
+      <pose>10.807 -25.3523 0 0 0 -1.5708</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>19</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>aws_robomaker_residential_Refrigerator_01</uri>
+      <name>aws_robomaker_residential_Refrigerator_01_1</name>
+      <pose>8.67839 -24.4579 0 0 -0 0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>21</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>aws_robomaker_residential_Carpet_01</uri>
+      <name>aws_robomaker_residential_Carpet_01</name>
+      <pose>-10.5409 -26.1223 0 0 -0 0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>3</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>aws_robomaker_residential_Trash_01</uri>
+      <name>aws_robomaker_residential_Trash_01_1</name>
+      <pose>-12.2306 -20.1789 0.000903 -0 0 -0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>12</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>aws_robomaker_residential_Trash_01</uri>
+      <name>aws_robomaker_residential_Trash_01_2</name>
+      <pose>-6.73909 -2.20607 0.000903 -0 0 -0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>12</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>aws_robomaker_residential_Trash_01</uri>
+      <name>aws_robomaker_residential_Trash_01_3</name>
+      <pose>6.78604 -2.72344 0.000903 -0 0 -0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>12</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>aws_robomaker_residential_Trash_01</uri>
+      <name>aws_robomaker_residential_Trash_01_4</name>
+      <pose>9.28401 11.7463 0.000903 -0 0 -0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>12</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>aws_robomaker_residential_Trash_01</uri>
+      <name>aws_robomaker_residential_Trash_01_5</name>
+      <pose>-0.705685 0.288968 0.000903 -0 0 -0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>12</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>aws_robomaker_residential_Trash_01</uri>
+      <name>aws_robomaker_residential_Trash_01_6</name>
+      <pose>-12.1303 11.6859 0.000903 -0 0 -0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>12</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://MopCart3</uri>
+      <name>MopCart3_1</name>
+      <pose>7.06425 3.68186 -6.1e-05 -0 0 -0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>20</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://WhiteChipChair</uri>
+      <name>WhiteChipChair</name>
+      <pose>-3.20992 -30.2863 0 0 -0 0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>7</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://MetalCabinet</uri>
+      <name>MetalCabinet_5</name>
+      <pose>0.932564 -26.3233 0 0 -0 0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>9</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://MetalCabinet</uri>
+      <name>MetalCabinet_6</name>
+      <pose>1.81929 -26.3282 0 0 -0 0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>9</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://VendingMachine</uri>
+      <name>VendingMachine_0</name>
+      <pose>7.04037 -24.368 -3e-06 -1e-06 -0 -1.57079</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>15</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://AdjTable</uri>
+      <name>AdjTable_6</name>
+      <pose>9.35844 -27.1991 0 0 -0 0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>6</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://Chair</uri>
+      <name>Chair_17</name>
+      <pose>8.81259 -26.2372 -1e-06 0 -0 -1.54804</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>7</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://Chair</uri>
+      <name>Chair_18</name>
+      <pose>9.95835 -26.2817 -1e-06 -0 -0 -1.89624</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>7</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://Chair</uri>
+      <name>Chair_19</name>
+      <pose>8.70487 -28.0966 -1e-06 -0 0 1.45448</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>7</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://Chair</uri>
+      <name>Chair_20</name>
+      <pose>10.0097 -28.1016 -0 0 0 1.74102</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>7</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>aws_robomaker_residential_SofaB_01</uri>
+      <name>aws_robomaker_residential_SofaB_01_1</name>
+      <pose>11.3219 -31.2304 -1e-06 0 0 1.63896</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>18</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>aws_robomaker_residential_SofaB_01</uri>
+      <name>aws_robomaker_residential_SofaB_01_2</name>
+      <pose>9.88025 -31.2975 -1e-06 0 0 1.56085</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>18</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>aws_robomaker_residential_CoffeeTable_01</uri>
+      <name>aws_robomaker_residential_CoffeeTable_01_2</name>
+      <pose>10.7279 -29.9417 0 0 -0 0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>6</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>aws_robomaker_residential_Trash_01</uri>
+      <name>aws_robomaker_residential_Trash_01_7</name>
+      <pose>7.86055 -24.4308 0.000903 -0 0 -0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>12</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://StorageRack</uri>
+      <name>StorageRack_3</name>
+      <pose>4.69144 -31.518 -1e-06 0 -0 -0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>14</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://StorageRack</uri>
+      <name>StorageRack_4</name>
+      <pose>3.29592 -31.5086 -1e-06 0 -0 -0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>14</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://StorageRackCovered</uri>
+      <name>StorageRackCovered_5</name>
+      <pose>4.63453 -29.4161 -1e-06 0 0 0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>14</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://StorageRackCovered</uri>
+      <name>StorageRackCovered_6</name>
+      <pose>3.19032 -29.4511 -1e-06 0 0 0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>14</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://BedsideTable</uri>
+      <name>BedsideTable_10</name>
+      <pose>2.06993 -31.4997 0.000179 -0 -0 1.58648</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>6</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://WhiteChipChair</uri>
+      <name>WhiteChipChair_0</name>
+      <pose>7.83266 -31.6231 0 0 -0 1.5708</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>7</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>aws_robomaker_hospital_ramp_01</uri>
+      <name>aws_robomaker_hospital_ramp_01</name>
+      <pose>1.76999 16.1773 0 0 -0 0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>3</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>model://TrolleyBed</uri>
+      <name>TrolleyBed_2</name>
+      <pose>0.161491 -15.403 -1e-06 0 0 -0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>8</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>aws_robomaker_residential_Carpet_01</uri>
+      <name>aws_robomaker_residential_Carpet_01_0</name>
+      <pose>10.4973 -29.5547 0 0 -0 0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>3</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>aws_robomaker_residential_Carpet_01</uri>
+      <name>aws_robomaker_residential_Carpet_01_1</name>
+      <pose>4.68739 8.36168 0 0 -0 0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>3</label>
+      </plugin>
+    </include>
+    <include>
+      <static>true</static>
+      <uri>aws_robomaker_residential_Carpet_01</uri>
+      <name>aws_robomaker_residential_Carpet_01_2</name>
+      <pose>-4.80392 8.2242 0 0 -0 0</pose>
+      <plugin name='ignition::gazebo::systems::Label' filename='ignition-gazebo-label-system'>
+        <label>3</label>
+      </plugin>
+    </include>
+
+    <include>
+      <uri>model://semantic_rgbd_camera</uri>
+      <pose>6 3 2 0 0 3.14</pose>
+    </include>
+  </world>
+</sdf>

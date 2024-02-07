@@ -1,0 +1,100 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <!-- Semantic Segmentation Camera Sensor -->
+  <model name="semantic_rgbd_camera">
+    <static>false</static>
+    <link name="link">
+      <inertial>
+        <mass>0</mass>
+        <inertia>
+          <ixx>0.000166667</ixx>
+          <iyy>0.000166667</iyy>
+          <izz>0.000166667</izz>
+        </inertia>
+      </inertial>
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>0.1 0.1 0.1</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <box>
+            <size>0.1 0.1 0.1</size>
+          </box>
+        </geometry>
+      </visual>
+      <sensor name="semantic_segmentation_camera" type="segmentation">
+        <topic>semantic</topic>
+        <camera>
+          <segmentation_type>semantic</segmentation_type>
+          <horizontal_fov>1.570796327</horizontal_fov>          <!-- 90 degrees -->
+          <image>
+            <width>640</width>
+            <height>480</height>
+          </image>
+          <clip>
+            <near>0.1</near>
+            <far>100</far>
+          </clip>
+          <lens>
+            <intrinsics>
+              <fx>320</fx>              <!-- width / (2 * tan(fov[rad] / 2)) -->
+              <fy>320</fy>              <!-- width / (2 * tan(fov[rad] / 2)) -->
+              <cx>320</cx>              <!-- width / 2 -->
+              <cy>240</cy>              <!-- height / 2 -->
+              <skew>0</skew>
+            </intrinsics>
+          </lens>
+          <save enabled="true">
+            <path>/home/rikkert/Desktop/segmentation_data/instance_camera</path>
+          </save>
+        </camera>
+        <always_on>1</always_on>
+        <update_rate>30</update_rate>
+        <visualize>true</visualize>
+      </sensor>
+      <sensor name="rgbd_camera" type="rgbd_camera">
+<camera>
+  <horizontal_fov>1.570796327</horizontal_fov>          <!-- 90 degrees -->
+  <image>
+    <width>640</width>
+    <height>480</height>
+  </image>
+  <clip>
+    <near>0.1</near>
+    <far>100</far>
+  </clip>
+  <lens>
+    <intrinsics>
+      <fx>320</fx>              <!-- width / (2 * tan(fov[rad] / 2)) -->
+      <fy>320</fy>              <!-- width / (2 * tan(fov[rad] / 2)) -->
+      <cx>320</cx>              <!-- width / 2 -->
+      <cy>240</cy>              <!-- height / 2 -->
+      <skew>0</skew>
+    </intrinsics>
+  </lens>
+</camera>
+        <always_on>1</always_on>
+        <update_rate>30</update_rate>
+        <visualize>true</visualize>
+        <topic>rgbd_camera</topic>
+        <enable_metrics>true</enable_metrics>
+      </sensor>
+    </link>
+    <plugin filename="ignition-gazebo-pose-publisher-system" name="ignition::gazebo::systems::PosePublisher">
+      <publish_link_pose>false</publish_link_pose>
+      <publish_sensor_pose>false</publish_sensor_pose>
+      <publish_collision_pose>false</publish_collision_pose>
+      <publish_visual_pose>false</publish_visual_pose>
+      <publish_nested_model_pose>true</publish_nested_model_pose>
+      <use_pose_vector_msg>false</use_pose_vector_msg>
+    </plugin>
+    <plugin filename="ignition-gazebo-velocity-control-system" name="ignition::gazebo::systems::VelocityControl">
+      <initial_linear>0 0 0</initial_linear>
+      <initial_angular>0 0 0</initial_angular>
+    </plugin>
+  </model>
+</sdf>
