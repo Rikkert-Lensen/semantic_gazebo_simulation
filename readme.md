@@ -55,8 +55,11 @@ You can write your own subscriber nodes using the pose and image information to 
 
 To move the camera I used the teleop keyboard which is publishing a twist message to the ros_bridge which is then transferring the message to the gazebo simulator which uses the tiwst message to move the camera. Alternatively it should be possible to control the camera by implenting a controller that publishes twist messages (I have not tested this). For instructions on how to use the teleop keyboard check the instructions given in the teleop keyboard terminal that opens.
 
+# !!! IMPORTANT NOTES !!!
 I did change some coordinate frame references so there might be misalignments due to incorrect coordinate references. You can find some sample code in ./scripts/semantic_cloud_publisher.py which should technically work. But I had some trouble reading the semantic labels in another subscriber node from the published point cloud. I would suggest copying the intrinsic camera code and the time synchronization part. But the construction and orientation of the pointcloud istelves is not very stable/correct yet. I did not know how to fix it so maybe you have an idea. 
 
-Also the camera_pose_transformer should work. But again might not be completeley corect anymore.
+Also the camera_pose_transformer should work. But again might not be completeley corect anymore. 
+See lines 33 and 34 in the ./src/camera_pose_transformer.cpp to understand what I mean.
 
-I ended up with a different script (not in this repo) that computed the 3D point coordinates and stored them in a numpy array with an additional column for the semantic label and used this to construct my voxelized maps directly from the numpy data without converting to a pointcloud first.
+## Quick and dirty solution
+I ended up with a different script (not in this repo) that computed the 3D point coordinates as a numpy array (and transformed the numpy array coordinates to align with the world frame) and stored with an additional column for the semantic label and used this to construct my voxelized maps directly from the numpy data without converting to a pointcloud first.
