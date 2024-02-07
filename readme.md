@@ -2,7 +2,7 @@
 
 * ROS Noetic (http://wiki.ros.org/noetic/Installation/Ubuntu)
 * Gazebo Fortress v6.15.0 (https://gazebosim.org/docs/fortress/install_ubuntu)
-* ros_bridge specifically using Noetic branch!!! (https://github.com/gazebosim/ros_gz/tree/noetic)
+* ros_bridge specifically using Noetic branch!!! BUILD FROM SOURCE for gazebo Fortress !!! (https://github.com/gazebosim/ros_gz/tree/noetic)
 * teleop_twist_keyboard (http://wiki.ros.org/teleop_twist_keyboard)
 
 Make sure you have created a catkin workspace (workspace can name can be something different than "catkin_ws")
